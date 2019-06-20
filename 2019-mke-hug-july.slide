@@ -1,0 +1,43 @@
+Building GCE Images With HashiCorp Packer
+15:00 23 Jul 2019
+
+Sean Malloy
+spinelli85@gmail.com
+http://spmalloy.com
+@spmalloy
+
+* Introduction
+
+.play -edit code/hello.go
+
+* Problem Statement
+
+Some Text
+
+* Packer To The Rescue!
+
+Some Text
+
+* Packer Overview
+
+CLI tool, JSON config, builders, provisioners, post processors
+
+* Simple GCE Image Build
+
+Some text
+
+* Enter Jenkins
+
+Some text
+
+* GCE Image Build From Scratch
+
+Google Compute Import Post Processor
+
+* Questions?
+
+Some Text
+
+* References
+
+https://packer.io
