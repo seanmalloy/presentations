@@ -1,6 +1,7 @@
 ## Presentations
 Here is where I keep all of my presentations. I'm using
-the [Go present tool](https://godoc.org/golang.org/x/tools/present).
+the [Go present tool](https://godoc.org/golang.org/x/tools/present). PDFs
+of the presentations can be found [here](pdf).
 
 ## Customize
 Files in the `base` directory can be updated to change to over all look
