@@ -12,34 +12,61 @@ http://spmalloy.com
 
 * Problem Statement
 
-Some Text
+- Need to rapidly deploy GCE instances in Google Cloud
+- Minimize deployment time bootstrap automation
+- Automated at scale
 
 * Packer To The Rescue!
 
-Some Text
+HashiCorp Packer is a simple CLI tool that can ...
+- Automate building virtual machine images
+- Build images for multiple platforms(cloud providers)
+- Build images using multiple third party config tools(ansible, chef, puppet, etc)
 
 * Packer Overview
 
-CLI tool, JSON config, builders, provisioners, post processors
+CLI tool that uses JSON configuration files(templates). Provide a JSON file with
+the list of builders, provisioners, and post-processors.
+
+- Builders list of one or more platorms(cloud providers)
+- Provisioners list of one or more scripts to execute(ansible, chef, puppet, etc)
+- Post-Processors optional
+- Docs https://packer.io/docs/index.html
+
+.play -edit code/packer_help.sh
 
 * Simple GCE Image Build
 
-Some text
+.play -edit code/packer_build.sh
 
 * Enter Jenkins
 
-Some text
+Don't run "packer build" commands from your laptop. Instead automate the entire process.
+
+Simple examples using Jenkins:
+
+https://github.com/seanmalloy/vm-image-builds
 
 * GCE Image Build From Scratch
 
-Google Compute Import Post Processor
+Previous examples started with the pre-built CentOS 7 image in GCP.
+
+The Packer googlecompute-import post-processor can be used to build an image from scratch.
+- Build an image for a Linux distro not provided by GCP(i.e. Fedora, Arch, etc)
+- Bring your own license
+
+https://packer.io/docs/post-processors/googlecompute-import.html
 
 * References
 
 https://packer.io
+https://packer.io/docs/index.html
+https://packer.io/docs/builders/googlecompute.html
+https://packer.io/docs/post-processors/googlecompute-import.html
 https://github.com/seanmalloy/vm-image-builds
+https://github.com/hashicorp/packer
 
-* Questions?
+* Questions
 
-Some Text
+???
 
