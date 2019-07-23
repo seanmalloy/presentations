@@ -45,7 +45,7 @@ Don't run "packer build" commands from your laptop. Instead automate the entire 
 
 Simple examples using Jenkins:
 
-https://github.com/seanmalloy/vm-image-builds
+[[https://github.com/seanmalloy/vm-image-builds]]
 
 * GCE Image Build From Scratch
 
@@ -55,16 +55,16 @@ The Packer googlecompute-import post-processor can be used to build an image fro
 - Build an image for a Linux distro not provided by GCP(i.e. Fedora, Arch, etc)
 - Bring your own license
 
-https://packer.io/docs/post-processors/googlecompute-import.html
+[[https://packer.io/docs/post-processors/googlecompute-import.html]]
 
 * References
 
-https://packer.io
-https://packer.io/docs/index.html
-https://packer.io/docs/builders/googlecompute.html
-https://packer.io/docs/post-processors/googlecompute-import.html
-https://github.com/seanmalloy/vm-image-builds
-https://github.com/hashicorp/packer
+- [[https://packer.io]]
+- [[https://packer.io/docs/index.html]]
+- [[https://packer.io/docs/builders/googlecompute.html]]
+- [[https://packer.io/docs/post-processors/googlecompute-import.html]]
+- [[https://github.com/seanmalloy/vm-image-builds]]
+- [[https://github.com/hashicorp/packer]]
 
 * Questions
 
