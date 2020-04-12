@@ -1,0 +1,25 @@
+Introduction To Prometheus Monitoring
+13:00 9 May 2020
+
+Sean Malloy
+spinelli85@gmail.com
+http://spmalloy.com
+@spmalloy
+
+* Introduction
+
+.play -edit code/hello.go
+
+* Problem Statement
+
+- Need to monitor stuff
+
+* References
+
+- [[https://packer.io]]
+- [[https://packer.io/docs/index.html]]
+
+* Questions
+
+???
+
