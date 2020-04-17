@@ -12,12 +12,60 @@ http://spmalloy.com
 
 * Problem Statement
 
+- TODO fill in this slide
 - Need to monitor stuff
+
+* Prometheus To The Rescue!
+
+asdf
+
+* Basics - Architecture
+
+TODO describe the pull model, metrics based approach, alertmanager, and what an exporter is, and TSDB
+
+TODO add a diagram here
+
+* Basics - Run Locally
+
+TODO run example of local prometheus monitoring it self
+
+TODO cover config file sections. Explain scrape jobs config and alerts config
+
+* Basics - PromQL and Metric Types
+
+TODO cover 4 different types of metrics and basic PromQL features
+
+* Basics - Prometheus Metrics Format
+
+TODO cover the metrics format show example using curl
+
+* Basics - Add Alertmanager
+
+TODO add alertmanager config, show setting up slack integration
+
+* Intermeadiate - ???
+
+- TODO: relabeling
+- TODO: node_exporter
+- TODO: alert examples(Linux OS performance USE metrics, cron jobs, systemd services)
+- TODO: Grafana
+
+* Advanced - ???
+
+- TODO: service discovery
+- TODO: recording rules
+- TODO: federation
+- TODO: remote read/write
+- TODO: other exporters
+- TODO: creating your own exporter
+- TODO: open metrics
 
 * References
 
-- [[https://packer.io]]
-- [[https://packer.io/docs/index.html]]
+- [[https://prometheus.io]]
+- [[https://github.com/prometheus]]
+- [[https://grafana.com]]
+- [[https://openmetrics.io]]
 
 * Questions
 
