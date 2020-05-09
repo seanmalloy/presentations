@@ -12,18 +12,31 @@ http://spmalloy.com
 
 * Problem Statement
 
-- TODO fill in this slide
-- Need to monitor stuff
+Need a low cost solution to monitoring infrastructure and applications in both dynamic and static environments.
 
 * Prometheus To The Rescue!
 
-asdf
+- Open Source Apache 2.0 License
+- CNCF Project(vendor neutral part of Linux Foundation)
+- Metrics based monitoring
+- Dynamically discover monitoring targets in cloud environments
+
+Software Versions
+- Prometheus v2.18.1
+- Alertmanager v0.20.0
+- node_exporter v0.18.1
 
 * Basics - Architecture
 
-TODO describe the pull model, metrics based approach, alertmanager, and what an exporter is, and TSDB
+A Prometheus deployment consists of Prometheus, Alertmanager, and Grafana(optional). These components can be run on physical, virtual, containerized infrastructure.
 
-TODO add a diagram here
+- Metrics, not commands, used for monitoring
+- Pull model, not push
+- Data stored in Prometheus TSDB
+- Exporters(agents) used to collect metrics
+
+* Basics - Diagram
+.image images/prom_basic.jpg _ 900
 
 * Basics - Run Locally
 

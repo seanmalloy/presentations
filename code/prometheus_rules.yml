@@ -1,0 +1,27 @@
+groups:
+- name: absent-rules
+  rules:
+  - alert: NodeExporterMetricsAbsent
+    expr: absent(up{job="node_exporter"} == 1)
+    for: 30s
+    labels:
+      severity: page
+    annotations:
+      summary: Node Exporter Metrics Gone
+  - alert: PrometheusMetricsAbsent
+    expr: absent(up{job="prometheus"})
+    for: 30s
+    labels:
+      severity: page
+    annotations:
+      summary: Prometheus Metrics Gone
+- name: general
+  rules:
+  - alert: TargetDown
+    expr: 100 * (count by(job) (up == 0) / count by(job) (up)) > 10
+    for: 30s
+    labels:
+      severity: page
+    annotations:
+      summary: '{{ $value | humanize }}% of {{ $labels.job }} job targets are down'
+
