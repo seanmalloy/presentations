@@ -64,10 +64,9 @@ Prometheus has four different metric types.
 
 * Service Discovery
 
-- TODO: relabeling
-- TODO: node_exporter
-- TODO: alert examples(Linux OS performance USE metrics, cron jobs, systemd services)
-- TODO: Grafana
+Dynamically discover scrape targets in cloud environments. This example uses Google Cloud Platform.
+
+.link https://prometheus.io/docs/prometheus/latest/configuration/configuration/#gce_sd_config
 
 * Production Deployment
 .image images/prom_advanced.jpg _ 900
