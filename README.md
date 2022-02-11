@@ -10,7 +10,7 @@ and feel of all presentations in this repo.
 ## Install
 ```
 $ go get golang.org/x/tools/cmd/present
-$ go install golang.org/x/tools/cmd/present
+$ go install golang.org/x/tools/cmd/present@latest
 ```
 ## Run
 ```
