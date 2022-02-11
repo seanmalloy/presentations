@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pause
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pause
+  labels:
+    app: pause
+  namespace: pause
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pause
+  template:
+    metadata:
+      labels:
+        app: pause
+    spec:
+      containers:
+      - name: pause
+        image: k8s.gcr.io/pause:latest

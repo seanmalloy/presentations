@@ -12,7 +12,7 @@ func main() {
 	x := Presenter{}
 	x.Name = "Sean Malloy"
 	x.Employeer = "Kohl's Departments Stores"
-	x.Title = "Software Engineer"
+	x.Title = "Platform Engineer"
 	fmt.Println(x.Name)
 	fmt.Println(x.Employeer)
 	fmt.Println(x.Title)

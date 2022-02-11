@@ -1,0 +1,94 @@
+Introduction to Linux Container Orchestration with Kubernetes
+13:00 12 February 2022
+
+Sean Malloy
+spinelli85@gmail.com
+http://spmalloy.com
+@spmalloy
+
+* Introduction
+
+.play -edit code/hello.go
+
+* Problem Statement
+
+Deploying new versions of applications takes too long and is a labor intensive process.
+
+* Kubernetes To The Rescue!
+
+- Open Source Apache 2.0 License
+- CNCF Project(vendor neutral and part of Linux Foundation)
+- Linux container orchestrator
+- Can be installed on public could infrastructure and on-premise infrastructure
+- Abbreviated k8s
+
+Software Versions
+- k8s v1.23.3
+- kind v0.11.1
+
+* Basics - Architecture
+
+A k8s deployment consists of a control plane and one or more works nodes.
+
+- Nodes are virtual machines or physical servers
+- Control Plane(api-server, scheduler, etcd, controller-manager)
+- Worker nodes run application work loads
+
+* Basics - Diagram
+.image images/components-of-kubernetes.svg _ 1000
+
+.link https://kubernetes.io/docs/concepts/overview/components/
+
+* Basics - Run Locally
+
+.play -edit code/kind.sh
+
+- Pods vs Containers
+- List pods
+- List nodes
+- Namespaces are tenants
+- YAML all the things
+
+* Basics - Deploy An Application
+
+Creates a k8s namespace and deployment with a single pod.
+
+.play -edit code/k8s-deploy-pause.sh
+
+Deploy nginx with three pods.
+
+.play -edit code/k8s-deploy-nginx.sh
+
+* Basics - Build a Container Image
+There are many tools that can build a container image. Here is a demo using docker.
+
+- [[https://github.com/GoogleContainerTools/jib]]
+- [[https://github.com/GoogleContainerTools/kaniko]]
+- [[https://buildah.io]]
+
+* Production Deployment
+You can deploy your own clusters or use a cloud provider cluster as a service offering.
+
+- [[https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm]]
+- [[https://github.com/kubernetes-sigs/kubespray]]
+- GKE, AKS, EKS, etc.
+- Rancher, OpenShift, VMware
+
+* Other Topics
+
+- Ingress
+- Storage
+- Advanced Deployment Tools(Helm, ArgoCD, FluxCD)
+- Many others
+
+* References
+
+- [[https://kubernetes.io]]
+- [[https://github.com/kubernetes]]
+- [[https://kind.sigs.k8s.io]]
+- [[https://www.cncf.io]]
+
+* Questions
+
+???
+
