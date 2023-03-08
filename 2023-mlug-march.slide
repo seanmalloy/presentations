@@ -1,0 +1,109 @@
+Introduction to Linux eBPF
+13:00 11 March 2023
+
+Sean Malloy
+spinelli85@gmail.com
+http://spmalloy.com
+@spmalloy
+
+* Introduction
+
+.play -edit code/hello.go
+
+* What is eBPF?
+
+eBPF is a revolutionary technology with origins in the Linux kernel that can
+run sandboxed programs in a privileged context such as the operating system
+kernel. It is used to safely and efficiently extend the capabilities of the
+kernel without requiring to change kernel source code or load kernel modules.[1]
+
+eBPF is a Linux kernel feature that enables observability, networking, and security
+super powers.
+
+eBPF == Extended Berkley Packet Filter
+
+- [1] [[https://ebpf.io/what-is-ebpf/]]
+
+* eBPF To The Rescue!
+
+This presentation uses the below software and versions.
+
+- Fedora 37 Linux Distribution
+- Linux Kernel 6.1.x
+- bcc 0.24.0 - [[https://github.com/iovisor/bcc]]
+- bpftrace 0.16.0 - [[https://github.com/iovisor/bpftrace]]
+
+.play -edit code/ebpf-tools-install.sh
+
+* Basics - Architecture
+
+.image images/ebpf-architecture.png _ 650
+.link https://ebpf.io/what-is-ebpf/#hook-overview
+
+* Basics - Different Types of Tracing
+
+- kprobes - dynamic kernel tracing
+- tracepoints - static kernel tracing
+- uprobes - dynamic userspace tracing
+- USDTs(user statically definced tracepoints) - static userspace tracing
+
+Linux kernel kprobes do not have a stable ABI, so they behave differently across
+different kernel versions.
+
+Linux kernel tracepoints are static, but provide a guaranteed stable ABI between
+different Linux kernel versions.
+
+USDTs require userspace application code changes.
+
+* Basics - Hello eBPF
+
+Run a hello world eBPF example.
+
+.play -edit code/ebpf-bpftrace-hello.sh
+.play -edit code/ebpf-bcc-hello.py
+
+* Count Number of System Calls Per Process
+
+.play -edit code/ebpf-bpftrace-syscall-count.sh
+
+- [[https://github.com/iovisor/bpftrace/blob/master/docs/tutorial_one_liners.md#lesson-4-syscall-counts-by-process]]
+
+* Trace TCP connect()
+- sudo /usr/share/doc/bcc/examples/tracing/tcpv4connect.py
+- [[https://github.com/iovisor/bcc/blob/master/examples/tracing/tcpv4connect.py]]
+
+* Watch For DNS Queries
+
+docker run --name tracee \
+    --rm -it --pid=host --cgroupns=host \
+    --privileged -v /etc/os-release:/etc/os-release-host:ro \
+    -e LIBBPFGO_OSRELEASE_FILE=/etc/os-release-host \
+    aquasec/tracee:latest \
+    --filter event=net_packet_dns --filter net_packet_dns.args.src=8.8.8.8
+
+- [[https://github.com/aquasecurity/tracee]]
+
+* Other Topics
+
+List loaded eBPF programs in the kernel
+- sudo bpftool prog
+
+List static kernel trace points
+- sudo ls -l /sys/kernel/debug/tracing/events/
+
+* References
+
+- [[https://ebpf.io/]]
+- [[https://ebpf.io/applications/]]
+- [[https://ebpf.io/infrastructure/]]
+- [[https://github.com/iovisor/bcc]]
+- [[https://github.com/iovisor/bpftrace]]
+- [[https://github.com/aquasecurity/tracee]]
+- [[https://www.oreilly.com/library/view/linux-observability-with/9781492050193/]]
+- [[https://www.brendangregg.com/bpf-performance-tools-book.html]]
+- [[https://www.brendangregg.com/overview.html]]
+
+* Questions
+
+???
+
