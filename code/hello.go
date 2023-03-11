@@ -11,8 +11,8 @@ type Presenter struct {
 func main() {
 	x := Presenter{}
 	x.Name = "Sean Malloy"
-	x.Employeer = "Kohl's Departments Stores"
-	x.Title = "Platform Engineer"
+	x.Employeer = "Red Hat"
+	x.Title = "Technical Account Manager"
 	fmt.Println(x.Name)
 	fmt.Println(x.Employeer)
 	fmt.Println(x.Title)
