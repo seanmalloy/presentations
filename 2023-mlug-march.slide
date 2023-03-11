@@ -42,9 +42,9 @@ This presentation uses the below software and versions.
 
 * Basics - Different Types of Tracing
 
-- kprobes - dynamic kernel tracing
+- kprobes - dynamic kernel tracing(kretprobes)
 - tracepoints - static kernel tracing
-- uprobes - dynamic userspace tracing
+- uprobes - dynamic userspace tracing(uretprobes)
 - USDTs(user statically definced tracepoints) - static userspace tracing
 
 Linux kernel kprobes do not have a stable ABI, so they behave differently across
