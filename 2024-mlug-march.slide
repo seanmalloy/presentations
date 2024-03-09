@@ -1,0 +1,101 @@
+Using YubiKey and FIDO2 With OpenSSH
+13:00 9 March 2024
+
+Sean Malloy
+spinelli85@gmail.com
+http://spmalloy.com
+@spmalloy
+
+* Introduction
+
+.play -edit code/hello.go
+
+* What Problem Are We Trying To Solve?
+
+You are using SSH public key authentication and you
+want to prevent your private key from being stolen.
+
+What are your options?
+- Use a tradional(i.e. stored on disk) SSH key pair with a passphrase
+- Build an under ground bunker with no internet access and never leave
+- Use a hardware security token to store your private SSH key
+
+* What is a YubiKey?
+
+A YubiKey is a hardware security token that adds an extra layer of security to
+online services. It looks like a USB thumb drive and is manufactured by Yubico,
+a hardware security vendor.
+
+.image images/yubikeys.jpeg _ 400
+
+[[https://www.yubico.com/why-yubico/for-individuals/]]
+
+* What is a FIDO2?
+
+Fast IDentity Online 2 (FIDO2) is a set of specifications that allows users to
+authenticate to online services using common devices. It's an open standard that
+uses cryptographic credentials to protect users and organizations from cybercrimes.
+
+[[https://fidoalliance.org/fido2/]]
+
+* What is OpenSSH?
+
+OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It
+encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks.
+In addition, OpenSSH provides a large suite of secure tunneling capabilities, several
+authentication methods, and sophisticated configuration options.
+
+[[https://www.openssh.com/]]
+
+* Software and Hardware Used
+
+- Fedora 39 Linux Distribution [[https://fedoraproject.org/]]
+- OpenSSH 9.3p1 [[https://www.openssh.com/]]
+- YubiKey Manager (ykman) 5.3.0 [[https://github.com/Yubico/yubikey-manager]]
+- Yubikey 5 Series (Nano) [[https://www.yubico.com/]]
+- OpenSSH version 8.2 is the first relase to support FIDO2.
+
+.play -edit code/yubikey-tools-install.sh
+
+* Basics
+
+Set a PIN for the YubiKey:
+$ ykman fido access change-pin
+
+Generate a SSH key pair:
+$ ssh-keygen -t ed25519-sk
+
+Copy the public key:
+$ scp ~/.ssh/id_ed25519_sk.pub $SERVER:
+
+* Resident vs. Non-Resident Keys
+
+- A FIDO key consist of two parts a key handle and a private key
+- By default OpenSSH creates non-resident(non-discoverable) keys(key handle on disk, private key on YubiKey)
+- OpenSSH can also create a resident(discoverable) key(key handle and private key on YubiKey)
+
+Generate a resident SSH key pair:
+$ ssh-keygen -t ed25519-sk -f ~/.ssh/id_ed25519_sk_resident -O resident
+
+* YubiKey With Or Without PIN
+
+A YubiKey can be setup to not use a PIN:
+$ ykman fido reset
+
+Generate a SSH key pair:
+$ ssh-keygen -t ed25519-sk
+
+* References
+
+- [[https://www.openssh.com/]]
+- [[https://www.yubico.com/]]
+- [[https://developers.yubico.com/SSH/]]
+- [[https://developers.yubico.com/SSH/Securing_SSH_with_FIDO2.html]]
+- man ssh-keygen
+- man sshd
+- man sshd_config
+
+* Questions
+
+???
+
