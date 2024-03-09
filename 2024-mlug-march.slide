@@ -60,7 +60,7 @@ authentication methods, and sophisticated configuration options.
 * Basics
 
 Set a PIN for the YubiKey:
-$ ykman fido access change-pin
+$ ykman fido access change-pin # a PIN is optional
 
 Generate a SSH key pair:
 $ ssh-keygen -t ed25519-sk
@@ -75,15 +75,25 @@ $ scp ~/.ssh/id_ed25519_sk.pub $SERVER:
 - OpenSSH can also create a resident(discoverable) key(key handle and private key on YubiKey)
 
 Generate a resident SSH key pair:
-$ ssh-keygen -t ed25519-sk -f ~/.ssh/id_ed25519_sk_resident -O resident
+$ ssh-keygen -t ed25519-sk -O resident
 
-* YubiKey With Or Without PIN
+Retrive key handle from YubiKey for a resident key:
+$ cd .ssh
+$ ssh-keygen -K
 
-A YubiKey can be setup to not use a PIN:
-$ ykman fido reset
+* Requiring A PIN
 
 Generate a SSH key pair:
-$ ssh-keygen -t ed25519-sk
+$ ssh-keygen -t ed25519-sk -O resident -O verify-required
+
+Start ssh-agent and SSH:
+$ eval "$(ssh-agent)"
+$ ssh $SERVER
+
+The PubkeyAuthOptions configuration option can be used in the /etc/ssh/sshd_conifg file to require all FIDO2 SSH keys to require PIN verification. The PubkeyAuthOptions
+configuration option can also be used inside a Match block in sshd_config.
+
+As an alternative the verify-required option can be used in a ~/.ssh/authorized_keys file to require PIN verification for a specific SSH key.
 
 * References
 
